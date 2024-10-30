@@ -1,0 +1,1338 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Move like Meat</title>
+      <script type="module" crossorigin src="./assets/index-DQr58F1l.js"></script>
+      <link rel="stylesheet" crossorigin href="./assets/index-BC7wIt1D.css">
+    </head>
+    <body class="lenis">
+        <header
+            class="flex flex-col justify-center items-center min-h-screen py-10 px-[5rem] bg-main-white z-50 relative"
+        >
+            <img
+                class="on_start_animation absolute h-[4.75rem] w-[4.375rem] top-[3.8125rem] left-[5rem]"
+                src="./disque.svg"
+            />
+            <img
+                class="absolute h-[2.625rem] w-[5.625rem] top-[5rem] left-[7.5rem]"
+                src="./move_like_meat.svg"
+            />
+            <h1
+                class="font_rs text-[8rem] leading-[5.7rem] mt-[3.125rem] mb-[1.25rem]"
+            >
+                La découpe<br />en musique
+            </h1>
+            <span class="mt-0 mb-[2rem] text-[2.5rem] font_nm_light">
+                ...pour une viande qui groove
+            </span>
+            <div class="relative mt-0 mb-auto">
+                <video
+                    id="video"
+                    class="rounded-[1.25rem] aspect-auto w-full h-auto"
+                    autoplay
+                    muted
+                    loop
+                >
+                    <source src="./video.mp4" type="video/mp4" />
+                    Vidéo introuvable.
+                </video>
+                <!-- <button
+                    id="toggle_sound"
+                    class="absolute bottom-4 right-4 px-2 py-1 border-2 border-main-black bg-main-white rounded-3xl"
+                >
+                    ACTIVER LE SON
+                </button> -->
+            </div>
+            <span
+                class="font_nm_ligth text-[1rem] w-[30%] ml-0 mr-auto mt-[6rem]"
+                >Plongez dans l’univers
+                <span class="font_nm_bold">Move Like Meat</span> où la tradition
+                de la boucherie se mêle au
+                <span class="font_nm_bold">pouvoir de la musique</span>. Grâce à
+                notre <span class="font_nm_bold">Trancheuse</span>, offrez à vos
+                clients des découpes parfaites, le tout dans une ambiance où la
+                puissance de la musique et la maîtrise de la découpe se
+                rejoignent pour créer un
+                <span class="font_nm_bold">produit unique</span>.</span
+            >
+            <button
+                class="bg-main-black text-main-white flex justify-center items-center font_nm_bold p-4 rounded-[4rem] leading-3 ml-0 mr-auto mt-9"
+            >
+                <img src="./fleche.svg" class="w-8 me-3" />JE ME LANCE
+            </button>
+        </header>
+        <section id="machine_3d_section" class="flex flex-col justify-center items-center px-20 h-[300vh] relative">
+            <h2 class="text-[5rem] font_rs ml-0 mr-auto mt-16">
+                Notre<br /><span class="text-main-red">trancheuse</span>
+            </h2>
+            <canvas id="machine_3d" class="sticky top-0 mt-10 mb-auto"></canvas>
+        </section>
+        <section
+            class="scroll_trigger_section relative flex flex-col z-0 overflow-x-hidden min-h-[300vh]"
+        >
+            <img class="mx-[10rem] mt-[-40%]" src="./disque.svg" />
+            <h2
+                class="absolute top-[22.875rem] left-1/2 translate-x-[-50%] font_rs text-[6.625rem] text-main-beige text-center leading-[5.8125rem]"
+            >
+                Choisis ton <br />disque !
+            </h2>
+            <div class="card_holder px-40 mb-32">
+                <div
+                    class="card_flip relative drop-shadow-2xl h-[31.25rem] w-[21rem]"
+                >
+                    <div
+                        class="flex flex-col h-[31.25rem] w-[21rem] overflow-hidden relative rounded-2xl"
+                    >
+                        <div class="h-[18.75rem] relative">
+                            <img
+                                src="./damier_acdc.png"
+                                class="h-full w-full object-cover"
+                            />
+                            <img
+                                src="./acdc.png"
+                                class="absolute bottom-0 max-h-full w-full object-cover"
+                            />
+                        </div>
+                        <div
+                            class="h-[12.5rem] bg-main-beige flex flex-col px-[1.25rem] py-[0.75rem]"
+                        >
+                            <span
+                                class="font_rs text-[2.21975rem] leading-8 mb-[0.75rem] text-main-red"
+                                >Highway to Hell - AC/DC</span
+                            >
+                            <span
+                                class="text-[0.723125rem] text-main-red font_nm_light"
+                                >Avec
+                                <span class="font_nm_bold">Highway to Hell</span
+                                >, le vinyle tranche la viande avec une force
+                                brute et un rythme implacable, produisant
+                                <span class="font_nm_bold"
+                                    >des coupes épaisses et audacieuses.</span
+                                >
+                                Chaque rotation insuffle une intensité sauvage,
+                                idéale pour des
+                                <span class="font_nm_bold"
+                                    >morceaux marbrés au goût puissant.</span
+                                ></span
+                            >
+                        </div>
+                    </div>
+                    <div
+                        class="flex flex-col h-[31.25rem] w-[21rem] relative overflow-hidden rounded-2xl"
+                    >
+                        <div
+                            class="flex flex-col h-[15.625rem] p-[1.25rem] bg-main-beige"
+                        >
+                            <span
+                                class="font_rs text-[2.21975rem] leading-8 mb-[1rem] text-main-red"
+                                >Les propriétés apportées</span
+                            >
+                            <div
+                                class="bg-main-red flex justify-between items-center px-[0.75rem] py-[0.375rem] rounded-[2rem] mb-[0.5rem]"
+                            >
+                                <div
+                                    class="flex justify-start items-center w-[4.2rem]"
+                                >
+                                    <span
+                                        class="text-[0.75rem] text-main-beige font_nm_bold"
+                                        >Épaisseur :
+                                    </span>
+                                </div>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                            </div>
+                            <div
+                                class="bg-main-red flex justify-between items-center px-[0.75rem] py-[0.375rem] rounded-[2rem] mb-[0.5rem]"
+                            >
+                                <div
+                                    class="flex justify-start items-center w-[4.2rem]"
+                                >
+                                    <span
+                                        class="text-[0.75rem] text-main-beige font_nm_bold"
+                                        >Texture :
+                                    </span>
+                                </div>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                            </div>
+                            <div
+                                class="bg-main-red flex justify-between items-center px-[0.75rem] py-[0.375rem] rounded-[2rem] mb-[0.5rem]"
+                            >
+                                <div
+                                    class="flex justify-start items-center w-[4.2rem]"
+                                >
+                                    <span
+                                        class="text-[0.75rem] text-main-beige font_nm_bold"
+                                        >Piment :
+                                    </span>
+                                </div>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                            </div>
+                            <div
+                                class="bg-main-red flex justify-between items-center px-[0.75rem] py-[0.375rem] rounded-[2rem] mb-[0.5rem]"
+                            >
+                                <div
+                                    class="flex justify-start items-center w-[4.2rem]"
+                                >
+                                    <span
+                                        class="text-[0.75rem] text-main-beige font_nm_bold"
+                                        >Élasticité :
+                                    </span>
+                                </div>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col h-[15.625rem] relative">
+                            <img
+                                class="object-cover h-full w-full object-right-bottom"
+                                src="./viande_acdc.png"
+                            />
+                            <div class="absolute top-4 left-5 w-fit flex">
+                                <span
+                                    class="bg-main-red font_nm_bold text-main-beige test rounded-2xl px-2 py-1 text-[0.7125rem]"
+                                    >HARD ROCK</span
+                                >
+                                <span
+                                    class="ms-2 bg-white font_nm_bold text-main-black rounded-2xl px-[0.6125rem] py-1 flex items-center text-[0.7125rem] cursor-pointer"
+                                    >PLAY
+                                    <img
+                                        class="ms-1 h-3"
+                                        src="./play_icone.svg"
+                                    />
+                                </span>
+                            </div>
+                            <span
+                                class="absolute right-5 bottom-4 bg-main-black border-2 border-main-white font_nm_bold text-main-white rounded-2xl px-[0.6125rem] py-1 text-[0.7125rem] flex items-center"
+                                ><img
+                                    src="./fleche.svg"
+                                    class="me-1"
+                                />RECETTE</span
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="card_flip relative drop-shadow-2xl h-[31.25rem] w-[21rem]"
+                >
+                    <div
+                        class="flex flex-col h-[31.25rem] w-[21rem] relative overflow-hidden rounded-2xl"
+                    >
+                        <div class="h-[18.75rem] relative">
+                            <img
+                                src="./damier_holiday.png"
+                                class="h-full w-full object-cover"
+                            />
+                            <img
+                                src="./holiday.png"
+                                class="absolute bottom-0 max-h-full w-full object-cover"
+                            />
+                        </div>
+                        <div
+                            class="h-[12.5rem] bg-main-beige flex flex-col px-[1.25rem] py-[0.75rem]"
+                        >
+                            <span
+                                class="font_rs text-[2.21975rem] leading-8 mb-[0.75rem] text-main-blue"
+                                >Strange Fruit - Billie Holiday</span
+                            >
+                            <span
+                                class="text-[0.723125rem] text-main-blue font_nm_light"
+                            >
+                                Le vinyle de
+                                <span class="font_nm_bold">Strange Fruit</span>
+                                découpe la viande avec une profondeur
+                                émotionnelle et une élégance sombre. Chaque
+                                <span class="font_nm_bold">tranche</span> est
+                                <span class="font_nm_bold"
+                                    >délicate et pleine de nuances</span
+                                >, parfaite pour des morceaux savoureux qui
+                                laissent une impression durable.
+                            </span>
+                        </div>
+                    </div>
+                    <div
+                        class="flex flex-col h-[31.25rem] w-[21rem] relative overflow-hidden rounded-2xl"
+                    >
+                        <div
+                            class="flex flex-col h-[15.625rem] p-[1.25rem] bg-main-beige"
+                        >
+                            <span
+                                class="font_rs text-[2.21975rem] leading-8 mb-[1rem] text-main-blue"
+                                >Les propriétés apportées</span
+                            >
+                            <div
+                                class="bg-main-blue flex justify-between items-center px-[0.75rem] py-[0.375rem] rounded-[2rem] mb-[0.5rem]"
+                            >
+                                <div
+                                    class="flex justify-start items-center w-[4.2rem]"
+                                >
+                                    <span
+                                        class="text-[0.75rem] text-main-beige font_nm_bold"
+                                        >Épaisseur :
+                                    </span>
+                                </div>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                            </div>
+                            <div
+                                class="bg-main-blue flex justify-between items-center px-[0.75rem] py-[0.375rem] rounded-[2rem] mb-[0.5rem]"
+                            >
+                                <div
+                                    class="flex justify-start items-center w-[4.2rem]"
+                                >
+                                    <span
+                                        class="text-[0.75rem] text-main-beige font_nm_bold"
+                                        >Texture :
+                                    </span>
+                                </div>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                            </div>
+                            <div
+                                class="bg-main-blue flex justify-between items-center px-[0.75rem] py-[0.375rem] rounded-[2rem] mb-[0.5rem]"
+                            >
+                                <div
+                                    class="flex justify-start items-center w-[4.2rem]"
+                                >
+                                    <span
+                                        class="text-[0.75rem] text-main-beige font_nm_bold"
+                                        >Piment :
+                                    </span>
+                                </div>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                            </div>
+                            <div
+                                class="bg-main-blue flex justify-between items-center px-[0.75rem] py-[0.375rem] rounded-[2rem] mb-[0.5rem]"
+                            >
+                                <div
+                                    class="flex justify-start items-center w-[4.2rem]"
+                                >
+                                    <span
+                                        class="text-[0.75rem] text-main-beige font_nm_bold"
+                                        >Élasticité :
+                                    </span>
+                                </div>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col h-[15.625rem] relative">
+                            <img
+                                class="object-cover h-full w-full object-right-bottom"
+                                src="./viande_holiday.png"
+                            />
+                            <div class="absolute top-4 left-5 w-fit flex">
+                                <span
+                                    class="bg-main-blue font_nm_bold text-main-beige test rounded-2xl px-2 py-1 text-[0.7125rem]"
+                                    >JAZZ</span
+                                >
+                                <span
+                                    class="ms-2 bg-white font_nm_bold text-main-black rounded-2xl px-[0.6125rem] py-1 flex items-center text-[0.7125rem] cursor-pointer"
+                                    >PLAY
+                                    <img
+                                        class="ms-1 h-3"
+                                        src="./play_icone.svg"
+                                    />
+                                </span>
+                            </div>
+                            <span
+                                class="absolute right-5 bottom-4 bg-main-black border-2 border-main-white font_nm_bold text-main-white rounded-2xl px-[0.6125rem] py-1 text-[0.7125rem] flex items-center"
+                                ><img
+                                    src="./fleche.svg"
+                                    class="me-1"
+                                />RECETTE</span
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="card_flip relative drop-shadow-2xl h-[31.25rem] w-[21rem]"
+                >
+                    <div
+                        class="flex flex-col h-[31.25rem] w-[21rem] relative overflow-hidden rounded-2xl"
+                    >
+                        <div class="h-[18.75rem] relative">
+                            <img
+                                src="./damier_deadmau.png"
+                                class="h-full w-full object-cover"
+                            />
+                            <img
+                                src="./deadmau.png"
+                                class="absolute bottom-0 max-h-full w-full object-cover"
+                            />
+                        </div>
+                        <div
+                            class="h-[12.5rem] bg-main-beige flex flex-col px-[1.25rem] py-[0.75rem]"
+                        >
+                            <span
+                                class="font_rs text-[2.21975rem] leading-8 mb-[0.75rem] text-main-green"
+                                >Strobe - Deadmau5</span
+                            >
+                            <span
+                                class="text-[0.723125rem] text-main-green font_nm_light"
+                            >
+                                Le vinyle de
+                                <span class="font_nm_bold">Strobe</span> découpe
+                                la viande avec une précision électrisante.
+                                Chaque rotation crée des
+                                <span class="font_nm_bold"
+                                    >tranches nettes et modernes</span
+                                >, idéales pour des pièces savoureuses, où la
+                                texture se mêle à une
+                                <span class="font_nm_bold"
+                                    >explosion de saveurs</span
+                                ></span
+                            >
+                        </div>
+                    </div>
+                    <div
+                        class="flex flex-col h-[31.25rem] w-[21rem] relative overflow-hidden rounded-2xl"
+                    >
+                        <div
+                            class="flex flex-col h-[15.625rem] p-[1.25rem] bg-main-beige"
+                        >
+                            <span
+                                class="font_rs text-[2.21975rem] leading-8 mb-[1rem] text-main-green"
+                                >Les propriétés apportées</span
+                            >
+                            <div
+                                class="bg-main-green flex justify-between items-center px-[0.75rem] py-[0.375rem] rounded-[2rem] mb-[0.5rem]"
+                            >
+                                <div
+                                    class="flex justify-start items-center w-[4.2rem]"
+                                >
+                                    <span
+                                        class="text-[0.75rem] text-main-beige font_nm_bold"
+                                        >Épaisseur :
+                                    </span>
+                                </div>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                            </div>
+                            <div
+                                class="bg-main-green flex justify-between items-center px-[0.75rem] py-[0.375rem] rounded-[2rem] mb-[0.5rem]"
+                            >
+                                <div
+                                    class="flex justify-start items-center w-[4.2rem]"
+                                >
+                                    <span
+                                        class="text-[0.75rem] text-main-beige font_nm_bold"
+                                        >Texture :
+                                    </span>
+                                </div>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                            </div>
+                            <div
+                                class="bg-main-green flex justify-between items-center px-[0.75rem] py-[0.375rem] rounded-[2rem] mb-[0.5rem]"
+                            >
+                                <div
+                                    class="flex justify-start items-center w-[4.2rem]"
+                                >
+                                    <span
+                                        class="text-[0.75rem] text-main-beige font_nm_bold"
+                                        >Piment :
+                                    </span>
+                                </div>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                            </div>
+                            <div
+                                class="bg-main-green flex justify-between items-center px-[0.75rem] py-[0.375rem] rounded-[2rem] mb-[0.5rem]"
+                            >
+                                <div
+                                    class="flex justify-start items-center w-[4.2rem]"
+                                >
+                                    <span
+                                        class="text-[0.75rem] text-main-beige font_nm_bold"
+                                        >Élasticité :
+                                    </span>
+                                </div>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col h-[15.625rem] relative">
+                            <img
+                                class="object-cover h-full w-full object-right-bottom"
+                                src="./viande_deadmau.png"
+                            />
+                            <div class="absolute top-4 left-5 w-fit flex">
+                                <span
+                                    class="bg-main-green font_nm_bold text-main-beige test rounded-2xl px-2 py-1 text-[0.7125rem]"
+                                    >Électro</span
+                                >
+                                <span
+                                    class="ms-2 bg-white font_nm_bold text-main-black rounded-2xl px-[0.6125rem] py-1 flex items-center text-[0.7125rem] cursor-pointer"
+                                    >PLAY
+                                    <img
+                                        class="ms-1 h-3"
+                                        src="./play_icone.svg"
+                                    />
+                                </span>
+                            </div>
+                            <span
+                                class="absolute right-5 bottom-4 bg-main-black border-2 border-main-white font_nm_bold text-main-white rounded-2xl px-[0.6125rem] py-1 text-[0.7125rem] flex items-center"
+                                ><img
+                                    src="./fleche.svg"
+                                    class="me-1"
+                                />RECETTE</span
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="card_flip relative drop-shadow-2xl h-[31.25rem] w-[21rem]"
+                >
+                    <div
+                        class="flex flex-col h-[31.25rem] w-[21rem] relative overflow-hidden rounded-2xl"
+                    >
+                        <div class="h-[18.75rem] relative">
+                            <img
+                                src="./damier_bizet.png"
+                                class="h-full w-full object-cover"
+                            />
+                            <img
+                                src="./bizet.png"
+                                class="absolute bottom-0 max-h-full w-full object-cover"
+                            />
+                        </div>
+                        <div
+                            class="h-[12.5rem] bg-main-beige flex flex-col px-[1.25rem] py-[0.75rem]"
+                        >
+                            <span
+                                class="font_rs text-[2.21975rem] leading-8 mb-[0.75rem] text-main-yellow"
+                                >Carmen - Georges Bizet</span
+                            >
+                            <span
+                                class="text-[0.723125rem] text-main-yellow font_nm_light"
+                            >
+                                Le vinyle de
+                                <span class="font_nm_bold">Carmen</span> découpe
+                                la viande avec
+                                <span class="font_nm_bold"
+                                    >passion et précision</span
+                                >. Chaque tranche est
+                                <span class="font_nm_bold"
+                                    >fine et harmonieuse</span
+                                >, parfaite pour des morceaux
+                                <span class="font_nm_bold"
+                                    >légers et délicats</span
+                                >, reflétant la fraîcheur et l'élégance du
+                                printemps.
+                            </span>
+                        </div>
+                    </div>
+                    <div
+                        class="flex flex-col h-[31.25rem] w-[21rem] relative overflow-hidden rounded-2xl"
+                    >
+                        <div
+                            class="flex flex-col h-[15.625rem] p-[1.25rem] bg-main-beige"
+                        >
+                            <span
+                                class="font_rs text-[2.21975rem] leading-8 mb-[1rem] text-main-yellow"
+                                >Les propriétés apportées</span
+                            >
+                            <div
+                                class="bg-main-yellow flex justify-between items-center px-[0.75rem] py-[0.375rem] rounded-[2rem] mb-[0.5rem]"
+                            >
+                                <div
+                                    class="flex justify-start items-center w-[4.2rem]"
+                                >
+                                    <span
+                                        class="text-[0.75rem] text-main-beige font_nm_bold"
+                                        >Épaisseur :
+                                    </span>
+                                </div>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                            </div>
+                            <div
+                                class="bg-main-yellow flex justify-between items-center px-[0.75rem] py-[0.375rem] rounded-[2rem] mb-[0.5rem]"
+                            >
+                                <div
+                                    class="flex justify-start items-center w-[4.2rem]"
+                                >
+                                    <span
+                                        class="text-[0.75rem] text-main-beige font_nm_bold"
+                                        >Texture :
+                                    </span>
+                                </div>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                            </div>
+                            <div
+                                class="bg-main-yellow flex justify-between items-center px-[0.75rem] py-[0.375rem] rounded-[2rem] mb-[0.5rem]"
+                            >
+                                <div
+                                    class="flex justify-start items-center w-[4.2rem]"
+                                >
+                                    <span
+                                        class="text-[0.75rem] text-main-beige font_nm_bold"
+                                        >Piment :
+                                    </span>
+                                </div>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                            </div>
+                            <div
+                                class="bg-main-yellow flex justify-between items-center px-[0.75rem] py-[0.375rem] rounded-[2rem] mb-[0.5rem]"
+                            >
+                                <div
+                                    class="flex justify-start items-center w-[4.2rem]"
+                                >
+                                    <span
+                                        class="text-[0.75rem] text-main-beige font_nm_bold"
+                                        >Élasticité :
+                                    </span>
+                                </div>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col h-[15.625rem] relative">
+                            <img
+                                class="object-cover h-full w-full object-right-bottom"
+                                src="./viande_bizet.png"
+                            />
+                            <div class="absolute top-4 left-5 w-fit flex">
+                                <span
+                                    class="bg-main-yellow font_nm_bold text-main-beige test rounded-2xl px-2 py-1 text-[0.7125rem]"
+                                    >CLASSIQUE</span
+                                >
+                                <span
+                                    class="ms-2 bg-white font_nm_bold text-main-black rounded-2xl px-[0.6125rem] py-1 flex items-center text-[0.7125rem] cursor-pointer"
+                                    >PLAY
+                                    <img
+                                        class="ms-1 h-3"
+                                        src="./play_icone.svg"
+                                    />
+                                </span>
+                            </div>
+                            <span
+                                class="absolute right-5 bottom-4 bg-main-black border-2 border-main-white font_nm_bold text-main-white rounded-2xl px-[0.6125rem] py-1 text-[0.7125rem] flex items-center"
+                                ><img
+                                    src="./fleche.svg"
+                                    class="me-1"
+                                />RECETTE</span
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="card_flip relative drop-shadow-2xl h-[31.25rem] w-[21rem]"
+                >
+                    <div
+                        class="flex flex-col h-[31.25rem] w-[21rem] relative overflow-hidden rounded-2xl"
+                    >
+                        <div class="h-[18.75rem] relative">
+                            <img
+                                src="./damier_ibarra.png"
+                                class="h-full w-full object-cover"
+                            />
+                            <img
+                                src="./ibarra.png"
+                                class="absolute bottom-0 max-h-full w-full object-cover"
+                            />
+                        </div>
+                        <div
+                            class="h-[12.5rem] bg-main-beige flex flex-col px-[1.25rem] py-[0.75rem]"
+                        >
+                            <span
+                                class="font_rs text-[2.21975rem] leading-8 mb-[0.75rem] text-main-black"
+                                >Cielo – Benny Ibarra</span
+                            >
+                            <span
+                                class="text-[0.723125rem] text-main-black font_nm_light"
+                            >
+                                Le vinyle de Cielo découpe la viande avec une
+                                <span class="font_nm_bold"
+                                    >intensité piquante et explosive</span
+                                >. Chaque tranche est
+                                <span class="font_nm_bold"
+                                    >fine et pleine de caractère</span
+                                >, idéale pour des morceaux qui embrassent la
+                                <span class="font_nm_bold">chaleur</span> et le
+                                dynamisme des
+                                <span class="font_nm_bold">saveurs épicées</span
+                                >.
+                            </span>
+                        </div>
+                    </div>
+                    <div
+                        class="flex flex-col h-[31.25rem] w-[21rem] relative overflow-hidden rounded-2xl"
+                    >
+                        <div
+                            class="flex flex-col h-[15.625rem] p-[1.25rem] bg-main-beige"
+                        >
+                            <span
+                                class="font_rs text-[2.21975rem] leading-8 mb-[1rem] text-main-black"
+                                >Les propriétés apportées</span
+                            >
+                            <div
+                                class="bg-main-black flex justify-between items-center px-[0.75rem] py-[0.375rem] rounded-[2rem] mb-[0.5rem]"
+                            >
+                                <div
+                                    class="flex justify-start items-center w-[4.2rem]"
+                                >
+                                    <span
+                                        class="text-[0.75rem] text-main-beige font_nm_bold"
+                                        >Épaisseur :
+                                    </span>
+                                </div>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                            </div>
+                            <div
+                                class="bg-main-black flex justify-between items-center px-[0.75rem] py-[0.375rem] rounded-[2rem] mb-[0.5rem]"
+                            >
+                                <div
+                                    class="flex justify-start items-center w-[4.2rem]"
+                                >
+                                    <span
+                                        class="text-[0.75rem] text-main-beige font_nm_bold"
+                                        >Texture :
+                                    </span>
+                                </div>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                            </div>
+                            <div
+                                class="bg-main-black flex justify-between items-center px-[0.75rem] py-[0.375rem] rounded-[2rem] mb-[0.5rem]"
+                            >
+                                <div
+                                    class="flex justify-start items-center w-[4.2rem]"
+                                >
+                                    <span
+                                        class="text-[0.75rem] text-main-beige font_nm_bold"
+                                        >Piment :
+                                    </span>
+                                </div>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                            </div>
+                            <div
+                                class="bg-main-black flex justify-between items-center px-[0.75rem] py-[0.375rem] rounded-[2rem] mb-[0.5rem]"
+                            >
+                                <div
+                                    class="flex justify-start items-center w-[4.2rem]"
+                                >
+                                    <span
+                                        class="text-[0.75rem] text-main-beige font_nm_bold"
+                                        >Élasticité :
+                                    </span>
+                                </div>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col h-[15.625rem] relative">
+                            <img
+                                class="object-cover h-full w-full object-right-bottom"
+                                src="./viande_ibarra.png"
+                            />
+                            <div class="absolute top-4 left-5 w-fit flex">
+                                <span
+                                    class="bg-main-black font_nm_bold text-main-beige test rounded-2xl px-2 py-1 text-[0.7125rem]"
+                                    >CLASSIQUE</span
+                                >
+                                <span
+                                    class="ms-2 bg-white font_nm_bold text-main-black rounded-2xl px-[0.6125rem] py-1 flex items-center text-[0.7125rem] cursor-pointer"
+                                    >PLAY
+                                    <img
+                                        class="ms-1 h-3"
+                                        src="./play_icone.svg"
+                                    />
+                                </span>
+                            </div>
+                            <span
+                                class="absolute right-5 bottom-4 bg-main-black border-2 border-main-white font_nm_bold text-main-white rounded-2xl px-[0.6125rem] py-1 text-[0.7125rem] flex items-center"
+                                ><img
+                                    src="./fleche.svg"
+                                    class="me-1"
+                                />RECETTE</span
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="card_flip relative drop-shadow-2xl h-[31.25rem] w-[21rem]"
+                >
+                    <div
+                        class="flex flex-col h-[31.25rem] w-[21rem] relative overflow-hidden rounded-2xl"
+                    >
+                        <div class="h-[18.75rem] relative">
+                            <img
+                                src="./damier_acdc.png"
+                                class="h-full w-full object-cover"
+                            />
+                            <img
+                                src="./acdc.png"
+                                class="absolute bottom-0 max-h-full w-full object-cover"
+                            />
+                        </div>
+                        <div
+                            class="h-[12.5rem] bg-main-beige flex flex-col px-[1.25rem] py-[0.75rem]"
+                        >
+                            <span
+                                class="font_rs text-[2.2rem] leading-8 mb-[0.75rem] text-main-red"
+                                >Limsa d'Aulnay - Black Room</span
+                            >
+                            <span
+                                class="text-[0.723125rem] text-main-red font_nm_light"
+                            >
+                                Sur un ton moins rapé qu'à son habitude, Limsa
+                                d'Aulnay réinvente la
+                                <span class="font_nm_bold">douceur</span> et la
+                                <span class="font_nm_bold">mélancolie</span>,
+                                attendrissant la viande ainsi
+                                <span class="font_nm_bold"
+                                    >chargée d'émotions</span
+                                >.
+                            </span>
+                        </div>
+                    </div>
+                    <div
+                        class="flex flex-col h-[31.25rem] w-[21rem] relative overflow-hidden rounded-2xl"
+                    >
+                        <div
+                            class="flex flex-col h-[15.625rem] p-[1.25rem] bg-main-beige"
+                        >
+                            <span
+                                class="font_rs text-[2.21975rem] leading-8 mb-[1rem] text-main-red"
+                                >Les propriétés apportées</span
+                            >
+                            <div
+                                class="bg-main-red flex justify-between items-center px-[0.75rem] py-[0.375rem] rounded-[2rem] mb-[0.5rem]"
+                            >
+                                <div
+                                    class="flex justify-start items-center w-[4.2rem]"
+                                >
+                                    <span
+                                        class="text-[0.75rem] text-main-beige font_nm_bold"
+                                        >Épaisseur :
+                                    </span>
+                                </div>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                            </div>
+                            <div
+                                class="bg-main-red flex justify-between items-center px-[0.75rem] py-[0.375rem] rounded-[2rem] mb-[0.5rem]"
+                            >
+                                <div
+                                    class="flex justify-start items-center w-[4.2rem]"
+                                >
+                                    <span
+                                        class="text-[0.75rem] text-main-beige font_nm_bold"
+                                        >Texture :
+                                    </span>
+                                </div>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                            </div>
+                            <div
+                                class="bg-main-red flex justify-between items-center px-[0.75rem] py-[0.375rem] rounded-[2rem] mb-[0.5rem]"
+                            >
+                                <div
+                                    class="flex justify-start items-center w-[4.2rem]"
+                                >
+                                    <span
+                                        class="text-[0.75rem] text-main-beige font_nm_bold"
+                                        >Piment :
+                                    </span>
+                                </div>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                            </div>
+                            <div
+                                class="bg-main-red flex justify-between items-center px-[0.75rem] py-[0.375rem] rounded-[2rem] mb-[0.5rem]"
+                            >
+                                <div
+                                    class="flex justify-start items-center w-[4.2rem]"
+                                >
+                                    <span
+                                        class="text-[0.75rem] text-main-beige font_nm_bold"
+                                        >Élasticité :
+                                    </span>
+                                </div>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] bg-main-beige border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                                <span
+                                    class="w-[2.375rem] h-[0.875rem] border-2 border-main-beige rounded-[1rem]"
+                                >
+                                </span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col h-[15.625rem] relative">
+                            <img
+                                class="object-cover h-full w-full object-right-bottom"
+                                src="./viande_acdc.png"
+                            />
+                            <div class="absolute top-4 left-5 w-fit flex">
+                                <span
+                                    class="bg-main-red font_nm_bold text-main-beige test rounded-2xl px-2 py-1 text-[0.7125rem]"
+                                    >HARD ROCK</span
+                                >
+                                <span
+                                    class="ms-2 bg-white font_nm_bold text-main-black rounded-2xl px-[0.6125rem] py-1 flex items-center text-[0.7125rem] cursor-pointer"
+                                    >PLAY
+                                    <img
+                                        class="ms-1 h-3"
+                                        src="./play_icone.svg"
+                                    />
+                                </span>
+                            </div>
+                            <span
+                                class="absolute right-5 bottom-4 bg-main-black border-2 border-main-white font_nm_bold text-main-white rounded-2xl px-[0.6125rem] py-1 text-[0.7125rem] flex items-center"
+                                ><img
+                                    src="./fleche.svg"
+                                    class="me-1"
+                                />RECETTE</span
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="bento">
+            <div class="bento-cell g-one"><img src="./damier.svg" /></div>
+            <div class="bento-cell g-two"><img src="./damier.svg" /></div>
+            <div class="bento-cell g-three"><img src="./damier.svg" /></div>
+            <div class="bento-cell g-four"><img src="./damier.svg" /></div>
+            <div class="bento-cell g-five"><img src="./damier.svg" /></div>
+            <div class="bento-cell g-six"><img src="./damier.svg" /></div>
+        </section>
+    </body>
+</html>
