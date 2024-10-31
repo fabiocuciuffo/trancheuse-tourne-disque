@@ -1,15 +1,22 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Move like Meat</title>
-      <script type="module" crossorigin src="./assets/index-DQr58F1l.js"></script>
-      <link rel="stylesheet" crossorigin href="./assets/index-BC7wIt1D.css">
+      <script type="module" crossorigin src="./assets/index-C8DjzbEl.js"></script>
+      <link rel="stylesheet" crossorigin href="./assets/index-DHYLTvbj.css">
     </head>
     <body class="lenis">
+        <section id="loader" class="fixed top-0 left-0 flex w-screen h-screen z-[9999] bg-main-white justify-center items-center">
+            <div id="loader_gigot" class="flex h-16 w-fit justify-center items-center">
+                <img class="h-16" src="./gigot.svg" alt="">
+                <img class="h-16" src="./gigot.svg" alt="">
+                <img class="h-16" src="./gigot.svg" alt="">
+            </div>
+        </section>
         <header
-            class="flex flex-col justify-center items-center min-h-screen py-10 px-[5rem] bg-main-white z-50 relative"
+            class="flex flex-col justify-center items-center min-h-screen py-10 px-[5rem] z-50 relative"
         >
             <img
                 class="on_start_animation absolute h-[4.75rem] w-[4.375rem] top-[3.8125rem] left-[5rem]"
@@ -19,23 +26,27 @@
                 class="absolute h-[2.625rem] w-[5.625rem] top-[5rem] left-[7.5rem]"
                 src="./move_like_meat.svg"
             />
-            <h1
-                class="font_rs text-[8rem] leading-[5.7rem] mt-[3.125rem] mb-[1.25rem]"
+            <h1 id="title"
+                class="font_rs text-[8rem] leading-[5.7rem] mt-[3.125rem] mb-[1.25rem] opacity-0"
             >
                 La découpe<br />en musique
             </h1>
-            <span class="mt-0 mb-[2rem] text-[2.5rem] font_nm_light">
+            <span id="subtitle" class="mt-0 mb-[2rem] text-[2.5rem] font_nm_light opacity-0">
                 ...pour une viande qui groove
             </span>
             <div class="relative mt-0 mb-auto">
                 <video
                     id="video"
-                    class="rounded-[1.25rem] aspect-auto w-full h-auto"
-                    autoplay
+                    class="rounded-[1.25rem] aspect-auto w-full h-auto opacity-0"
                     muted
                     loop
                 >
-                    <source src="./video.mp4" type="video/mp4" />
+                    <source
+                        src="./video.mp4"
+                        type="video/mp4"
+                        preload="none"
+                        poster="/thumbnail.png"
+                    />
                     Vidéo introuvable.
                 </video>
                 <!-- <button
@@ -63,11 +74,79 @@
                 <img src="./fleche.svg" class="w-8 me-3" />JE ME LANCE
             </button>
         </header>
-        <section id="machine_3d_section" class="flex flex-col justify-center items-center px-20 h-[300vh] relative">
+        <section
+            id="machine_3d_section"
+            class="flex flex-col justify-center items-center px-20 pb-16 h-[300vh] relative"
+        >
             <h2 class="text-[5rem] font_rs ml-0 mr-auto mt-16">
                 Notre<br /><span class="text-main-red">trancheuse</span>
             </h2>
-            <canvas id="machine_3d" class="sticky top-0 mt-10 mb-auto"></canvas>
+            <span
+                class="machine_info absolute left-16 top-[50rem] border-2 border-main-red rounded-2xl p-8 font_nm_bold text-[2rem] bg-main-white z-10 shadow-lg"
+                >Plastique alimentaire</span
+            >
+            <span
+                class="machine_info absolute right-24 top-[80rem] border-2 border-main-red rounded-2xl p-8 font_nm_bold text-[2rem] bg-main-white z-10 shadow-lg"
+                >Votre vinyle favori</span
+            >
+            <span
+                class="machine_info absolute left-32 top-[110rem] border-2 border-main-red rounded-2xl p-8 font_nm_bold text-[2rem] bg-main-white z-10 shadow-lg"
+                >Acier inoxydable</span
+            >
+            <span
+                class="machine_info absolute right-32 top-[135rem] border-2 border-main-red rounded-2xl p-8 font_nm_bold text-[2rem] bg-main-white z-10 shadow-lg"
+                >Alliage d'aluminiums</span
+            >
+            <canvas
+                id="machine_3d"
+                class="sticky top-0 mt-[-10rem] mb-auto z-0"
+            ></canvas>
+        </section>
+        <section class="separator h-[4.5rem]"></section>
+        <section class="fond_grain h-[200vh] px-72 pb-[25rem]">
+            <div class="sticky top-[10%]">
+                <div
+                    class="disque_plein absolute left-0 -translate-y-1/4 -translate-x-1/2 p-20 z-10"
+                >
+                    <span
+                        class="font_rs text-[2.125rem] text-center flex flex-col justify-center items-center text-main-beige leading-8"
+                        >Une<br />expérience<br />sensorielle<br />unique</span
+                    >
+                </div>
+                <div
+                    class="info_bouche shadow-xl absolute right-0 translate-x-1/2 bottom-0 translate-y-[20%] w-[30rem] bg-main-beige rounded-[2rem] text-main-red overflow-hidden z-10"
+                >
+                    <div class="p-7">
+                        <p class="font_rs text-[2rem] leading-8">
+                            La musique adoucit les moeurs... et la viande aussi
+                            !
+                        </p>
+                        <br />
+                        <p class="font_nm_thin text-[1rem] leading-[1.125rem]">
+                            Proposez à vos clients de déguster un produit
+                            d’exception. Grâce à la
+                            <span class="font_nm_bold">Trancheuse</span>, chaque
+                            morceau de viande est découpé au rythme de la
+                            musique, révélant une tendreté et des saveurs
+                            incomparables. Offrez une expérience culinaire
+                            personnalisée et inoubliable, où chaque note sublime
+                            la viande.
+                        </p>
+                    </div>
+                    <img
+                        src="./damier.svg"
+                        class="h-[5rem] object-cover w-full object-top"
+                    />
+                </div>
+                <img
+                    class="image_bouche z-0"
+                    class="w-full h-auto"
+                    src="./meat_lover.png"
+                />
+            </div>
+        </section>
+        <section class="h-fit">
+            <img src="./marquee.svg" class="object-cover w-full object-top" />
         </section>
         <section
             class="scroll_trigger_section relative flex flex-col z-0 overflow-x-hidden min-h-[300vh]"
@@ -1131,7 +1210,7 @@
                                 class="h-full w-full object-cover"
                             />
                             <img
-                                src="./acdc.png"
+                                src="./limsa.png"
                                 class="absolute bottom-0 max-h-full w-full object-cover"
                             />
                         </div>
@@ -1298,12 +1377,12 @@
                         <div class="flex flex-col h-[15.625rem] relative">
                             <img
                                 class="object-cover h-full w-full object-right-bottom"
-                                src="./viande_acdc.png"
+                                src="./viande_limsa.png"
                             />
                             <div class="absolute top-4 left-5 w-fit flex">
                                 <span
                                     class="bg-main-red font_nm_bold text-main-beige test rounded-2xl px-2 py-1 text-[0.7125rem]"
-                                    >HARD ROCK</span
+                                    >RAP</span
                                 >
                                 <span
                                     class="ms-2 bg-white font_nm_bold text-main-black rounded-2xl px-[0.6125rem] py-1 flex items-center text-[0.7125rem] cursor-pointer"
@@ -1325,14 +1404,120 @@
                     </div>
                 </div>
             </div>
+            <h2 class="text-[5rem] font_rs leading-[4.75rem] ps-[5rem] mt-32">
+                Vous aussi<br />rejoignez<br />nos<span class="text-main-red"
+                    >bouchers<br />movers</span
+                >
+            </h2>
         </section>
-        <section class="bento">
-            <div class="bento-cell g-one"><img src="./damier.svg" /></div>
-            <div class="bento-cell g-two"><img src="./damier.svg" /></div>
-            <div class="bento-cell g-three"><img src="./damier.svg" /></div>
-            <div class="bento-cell g-four"><img src="./damier.svg" /></div>
-            <div class="bento-cell g-five"><img src="./damier.svg" /></div>
-            <div class="bento-cell g-six"><img src="./damier.svg" /></div>
+        <section class="separator h-[4.5rem]"></section>
+        <section class="fond_grain h-[70vh] flex justify-between p-20">
+            <div class="w-[40%] h-full flex flex-col">
+                <span class="font_nm_thin text-[1.25rem] mb-12 leading-6"
+                    >En adoptant la
+                    <span class="font_nm_bold">Trancheuse</span>, entrez dans la
+                    communauté Move like Meat et offrez à vos clients une
+                    <span class="font_nm_bold">expérience culinaire</span> et
+                    <span class="font_nm_bold">musicale unique</span> !</span
+                >
+                <div class="flex flex-col">
+                    <span class="flex text-[3rem] font_rs leading-10 mb-4">
+                        <img src="./drapeau.svg" class="me-4" alt="" />
+                        <div>Découvrez<br />nos boucheries</div></span
+                    >
+                    <div class="flex flex-col text-[1.25rem]">
+                        <div class="flex w-full justify-between">
+                            <span>
+                                <span class="font_nm_bold"
+                                    >Boucherie Congre</span
+                                >
+                                <br />
+                                11 Rue Castellane <br />
+                                PARIS 75000 <br />
+                            </span>
+                            <span>
+                                <span class="font_nm_bold">Maison Bascle</span>
+                                <br />
+                                292 Rue Judaïque <br />
+                                BORDEAUX 33000 <br />
+                            </span>
+                        </div>
+                        <div class="flex w-full justify-between">
+                            <span>
+                                <span class="font_nm_bold"
+                                    >Boucherie du nord</span
+                                >
+                                <br />
+                                334 Rue du Faubourg <br />
+                                LILLE 59000 <br />
+                            </span>
+                            <span>
+                                <span class="font_nm_bold"
+                                    >Boucherie Bordes</span
+                                >
+                                <br />
+                                2 Rue Ernest Renan <br />
+                                TOULOUSE 31000 <br />
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <button
+                    class="bg-main-black text-main-white flex justify-center items-center font_nm_bold p-4 rounded-[4rem] leading-3 ml-0 w-fit mt-9"
+                >
+                    <img src="./fleche.svg" class="w-8 me-3" />JE ME LANCE
+                </button>
+            </div>
+            <div class="w-[40%] h-full">
+                <img src="./carte.svg" />
+            </div>
+        </section>
+        <section class="separator h-[4.5rem]"></section>
+        <section class="bento h-fit fond_grain">
+            <div class="bento-cell rounded-2xl overflow-hidden g-one relative">
+                <img
+                    class="object-contain absolute top-0 w-full h-auto"
+                    src="./damier_holiday.png"
+                /><img
+                    class="object-contain absolute bottom-0 w-full h-auto"
+                    src="./boucher.png"
+                />
+            </div>
+            <div class="bento-cell rounded-2xl overflow-hidden g-two">
+                <div class=" flex flex-col justify-center items-center bg-main-black text-main-beige w-full h-full">
+                    <span class="font_nm_bold leading-[3rem] text-[3.125rem]">Recommandé par le boucher</span>
+                    <span class="font_rs leading-[4rem] text-[5rem]">Hugo Desnoyer</span>
+                </div>
+            </div>
+            <div class="bento-cell g-three rounded-2xl overflow-hidden"><img src="./beef.png" class="object-cover w-full h-full" /></div>
+            <div class="bento-cell g-four rounded-2xl overflow-hidden bg-main-green flex flex-col justify-center items-start relative text-main-beige p-6">
+                <img src="./gigot_dessin.svg" class="absolute right-3 top-3">
+                <span class="text-[3.75rem] font_nm_bold leading-[3.75rem] mt-auto">
+                    Finesse<br>Rapidité<br>Efficacité
+                </span>
+                <div class="rounded-[4rem] flex justify-around border-4 border-main-beige w-full py-2 px-5 mb-0 mt-4">
+                    <img class="h-9 w-auto" src="./etoile_beige.svg" alt="">
+                    <img class="h-9 w-auto" src="./etoile_beige.svg" alt="">
+                    <img class="h-9 w-auto" src="./etoile_beige.svg" alt="">
+                    <img class="h-9 w-auto" src="./etoile_beige.svg" alt="">
+                    <img class="h-9 w-auto" src="./etoile_beige.svg" alt="">
+                </div>
+                <div class="rounded-[4rem] flex justify-around border-4 border-main-beige bg-main-beige w-full py-2 px-5 mt-2 mb-0">
+                    <img class="h-9 w-auto" src="./etoile_verte.svg" alt="">
+                    <img class="h-9 w-auto" src="./etoile_verte.svg" alt="">
+                    <img class="h-9 w-auto" src="./etoile_verte.svg" alt="">
+                    <img class="h-9 w-auto" src="./etoile_verte.svg" alt="">
+                    <img class="h-9 w-auto" src="./etoile_verte.svg" alt="">
+                </div>
+            </div>
+            <div class="bento-cell g-five rounded-2xl overflow-hidden bg-main-yellow flex p-6 justify-around">
+                <img src="./disque.svg" alt="">
+                <img src="./disque.svg" alt="">
+                <img src="./disque.svg" alt="">
+            </div>
+        </section>
+        <section class="h-fit">
+            <img src="./marquee.svg" class="object-cover w-full object-top" />
         </section>
     </body>
 </html>
